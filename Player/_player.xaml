@@ -1,0 +1,654 @@
+﻿<Window x:Class="Player._play"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lib="clr-namespace:Player"
+        xmlns:app="clr-namespace:Player"
+        Title="winPlay" Width="540" Height="1920" 
+        WindowStyle="None" Background="Black" ShowInTaskbar="False" ResizeMode="NoResize" Topmost="True"
+        Closing="Window_Closing" Loaded="Window_Loaded" Visibility="Visible">
+    <Window.Resources>
+        <x:Array x:Key="Transitions" Type="{x:Type lib:Transition}">
+            <!--0-->
+            <lib:StoryboardTransition TextSearch.Text="Fade Wipe 2">
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard0" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--1-->
+            <lib:StoryboardTransition TextSearch.Text="Star">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="/Player;component/Images/star.png" Stretch="Uniform">
+                                    <ImageBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="0" ScaleY="0"/>
+                                            <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                                        </TransformGroup>
+                                    </ImageBrush.RelativeTransform>
+                                </ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard1" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.RelativeTransform.Children[0].ScaleX" From="0" To="4" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.RelativeTransform.Children[0].ScaleY" From="0" To="4" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--2-->
+            <lib:StoryboardTransition TextSearch.Text="Melt">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Offset="0"/>
+                                    <GradientStop Offset="0.1"/>
+                                    <GradientStop Offset="0.2"/>
+                                    <GradientStop Offset="0.3"/>
+                                    <GradientStop Offset="0.4"/>
+                                    <GradientStop Offset="0.5"/>
+                                    <GradientStop Offset="0.6"/>
+                                    <GradientStop Offset="0.7"/>
+                                    <GradientStop Offset="0.8"/>
+                                    <GradientStop Offset="0.9"/>
+                                    <GradientStop Offset="1"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard2" Timeline.DesiredFrameRate="60">
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Color" To="White" Duration="0:0:0.2" BeginTime="0:0:0.14"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Color" To="White" Duration="0:0:0.3" BeginTime="0:0:0.2"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[2].Color" To="White" Duration="0:0:0.5" BeginTime="0:0:0.031"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[3].Color" To="White" Duration="0:0:0.3" BeginTime="0:0:0.02"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[4].Color" To="White" Duration="0:0:0.45" BeginTime="0:0:0.3"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[5].Color" To="White" Duration="0:0:0.25" BeginTime="0:0:0.12"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[6].Color" To="White" Duration="0:0:0.3" BeginTime="0:0:0.19"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[7].Color" To="White" Duration="0:0:0.4" BeginTime="0:0:0"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[8].Color" To="White" Duration="0:0:0.13" BeginTime="0:0:0.081"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[9].Color" To="White" Duration="0:0:0.34" BeginTime="0:0:0.331"/>
+                        <ColorAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[10].Color" To="White" Duration="0:0:0.42" BeginTime="0:0:.0121"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--3-->
+            <lib:StoryboardTransition TextSearch.Text="Horizontal Wipe">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#FF000000" Offset="0"/>
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard3" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Offset" From="0" To="1" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Offset" From="0" To="1" Duration="0:0:1.0" BeginTime="0:0:0.05"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--4-->
+            <lib:StoryboardTransition TextSearch.Text="Vertical Wipe">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#FF000000" Offset="0"/>
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard4" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Offset" From="0" To="1" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Offset" From="0" To="1" Duration="0:0:1.0" BeginTime="0:0:0.05"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--5-->
+            <lib:StoryboardTransition TextSearch.Text="Diagonal Wipe">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF000000" Offset="0"/>
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard5" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Offset" From="0" To="1" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Offset" From="0" To="1" Duration="0:0:1.0" BeginTime="0:0:0.05"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--6-->
+            <lib:StoryboardTransition TextSearch.Text="Rotate Wipe">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <LinearGradientBrush.Transform>
+                                        <RotateTransform Angle="10"/>
+                                    </LinearGradientBrush.Transform>
+                                    <GradientStop Offset="0" Color="White"/>
+                                    <GradientStop Offset="0.1" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard6" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.Transform.Angle" To="-90" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--7-->
+            <lib:StoryboardTransition TextSearch.Text="Double Rotate Wipe">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <DrawingBrush>
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Geometry="M0,0 L1,0 L1,1 L0,1 z">
+                                                <GeometryDrawing.Brush>
+                                                    <LinearGradientBrush EndPoint="1,0">
+                                                        <LinearGradientBrush.Transform>
+                                                            <RotateTransform Angle="5"/>
+                                                        </LinearGradientBrush.Transform>
+                                                        <GradientStop Offset="0"   Color="White"/>
+                                                        <GradientStop Offset="0.1" />
+                                                    </LinearGradientBrush>
+                                                </GeometryDrawing.Brush>
+                                            </GeometryDrawing>
+
+                                            <GeometryDrawing Geometry="M0,0 L1,0 L1,1 L0,1 z">
+                                                <GeometryDrawing.Brush>
+                                                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,1">
+                                                        <LinearGradientBrush.Transform>
+                                                            <RotateTransform Angle="5" CenterX="1" CenterY="1"/>
+                                                        </LinearGradientBrush.Transform>
+                                                        <GradientStop Offset="0"  Color="White" />
+                                                        <GradientStop Offset="0.1" />
+                                                    </LinearGradientBrush>
+                                                </GeometryDrawing.Brush>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard7" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.Drawing.Children[0].Brush.Transform.Angle" To="-45" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.Drawing.Children[1].Brush.Transform.Angle" To="-45" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--8-->
+            <lib:StoryboardTransition TextSearch.Text="Vertical Blinds">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush MappingMode="Absolute" SpreadMethod="Repeat" StartPoint="0,0" EndPoint="120,0">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard8" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Offset" To="1" Duration="0:0:1.0" BeginTime="0:0:0.2"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Offset" To="1" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--9-->
+            <lib:StoryboardTransition TextSearch.Text="Horizontal Blinds">
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush MappingMode="Absolute" SpreadMethod="Repeat" StartPoint="0,0" EndPoint="0,120">
+                                    <GradientStop Color="White"/>
+                                    <GradientStop/>
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard9" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[0].Offset" To="1" Duration="0:0:1.0" BeginTime="0:0:0.2"/>
+                        <DoubleAnimation Storyboard.TargetProperty="OpacityMask.GradientStops[1].Offset" To="1" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--10-->
+            <lib:StoryboardTransition TextSearch.Text="Roll" IsNewContentTopmost="false" ClipToBounds="true">
+                <lib:StoryboardTransition.OldContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="RenderTransformOrigin" Value="0,1"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <RotateTransform/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.OldContentStyle>
+                <lib:StoryboardTransition.OldContentStoryboard>
+                    <Storyboard x:Name="Storyboard10" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="0" To="-90" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.OldContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--11-->
+            <lib:StoryboardTransition TextSearch.Text="Fade And Grow" IsNewContentTopmost="False">
+                <lib:StoryboardTransition.OldContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.OldContentStyle>
+                <lib:StoryboardTransition.OldContentStoryboard>
+                    <Storyboard x:Name="Storyboard11_1" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="1" To="1.2" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" From="1" To="1.2" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.OldContentStoryboard>
+
+                <lib:StoryboardTransition.NewContentStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </lib:StoryboardTransition.NewContentStyle>
+                <lib:StoryboardTransition.NewContentStoryboard>
+                    <Storyboard x:Name="Storyboard11_2" Timeline.DesiredFrameRate="60">
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" From="0.8" To="1" Duration="0:0:1.0"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" From="0.8" To="1" Duration="0:0:1.0"/>
+                    </Storyboard>
+                </lib:StoryboardTransition.NewContentStoryboard>
+            </lib:StoryboardTransition>
+            <!--12-->
+            <lib:TranslateTransition TextSearch.Text="2D Translate Transition" Duration="0:0:1.0" StartPoint="1,0"/>
+            <!--13-->
+            <lib:TranslateTransition TextSearch.Text="2D Translate Transition" Duration="0:0:1.0" StartPoint="0,-1"/>
+            <!--14-->
+            <lib:RotateTransition TextSearch.Text="3D Rotate" Duration="0:0:1.0" FieldOfView="40" Angle="90" Direction="Left"/>
+            <!--15-->
+            <lib:RotateTransition TextSearch.Text="3D Rotate" Duration="0:0:1.0" FieldOfView="40" Angle="90" Direction="Down"/>
+            <!--16-->
+            <lib:RotateTransition TextSearch.Text="3D Spin" Duration="0:0:1.0" FieldOfView="40" Angle="0" Contained="true" Direction="Left"/>
+            <!--17-->
+            <lib:RotateTransition TextSearch.Text="3D Spin" Duration="0:0:1.0" FieldOfView="40" Angle="0" Contained="true" Direction="Down"/>
+            <!--18-->
+            <lib:DoorTransition TextSearch.Text="3D Door" Duration="0:0:1.0" FieldOfView="40"/>
+            <!--19-->
+            <!--<lib:FlipTransition TextSearch.Text="3D Flip" Duration="0:0:1.0"/>-->
+            <!--20-->
+            <!--<lib:ExplosionTransition TextSearch.Text="3D Explosion"/>-->
+        </x:Array>
+    </Window.Resources>
+
+    <Viewbox Stretch="None">
+        <Grid x:Name="rootGrid">
+            <!-- =========================== Standard Template  1920 * 1080 =========================== -->
+            <Grid x:Name="templete_Main" Width="1920" Height="1080" Visibility="Collapsed">
+                <Image x:Name="templete_bg_img" Stretch="Fill"/>
+                <Grid Name="templete_logo" Width="276" Height="102" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,69,0,0">
+                    <Image x:Name="templete_logo_img" Stretch="Fill"/>
+                </Grid>
+                <Grid Name="templete_clock" Width="275" Height="122" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,230,0,0" />
+                <Grid Name="templete_weather" Width="276" Height="185" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,473,0,0">
+                    <TextBlock Name="templete_weather_city" Width="276" Height="34" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" FontSize="22" Foreground="White" FontWeight="Bold" />
+                    <TextBlock Name="templete_weather_temp" Width="67" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,72,0,0" FontSize="18" Foreground="White" />
+                    <TextBlock Name="templete_weather_hm" Width="67" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,101,0,0" FontSize="18" Foreground="White" />
+                    <TextBlock Name="templete_weather_ment" Width="276" Height="34" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,152,0,0" FontSize="20" Foreground="White" TextAlignment="Center" FontWeight="Bold"/>
+                    <Grid Name="templete_weather_flash" Width="108" Height="106" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="153,42,0,0" />
+                </Grid>
+                <Grid Name="templete_stock" Width="275" Height="133" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,783,0,0">
+                    <TextBlock Name="templete_kospi" Width="129" Height="81" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,60,0,0" FontSize="22" Foreground="White" TextAlignment="Center" FontWeight="Bold" />
+                    <TextBlock Name="templete_kosdaq" Width="129" Height="81" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143,60,0,0" FontSize="22" Foreground="White" TextAlignment="Center" FontWeight="Bold" />
+                </Grid>
+                <Grid Name="templete_player" Width="1440" Height="810" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="402,87,0,0" Background="Black" />
+                <Grid Name="templete_ticker" Width="1511" Height="72" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="401,999,0,0" />
+            </Grid>
+
+            <!-- =========================== Custom (package e4) Template  1920 * 1080 =========================== -->
+            <Grid x:Name="e4_templete_Main" Width="1920" Height="1080" Visibility="Collapsed">
+                <Image x:Name="e4_templete_bg_img" Stretch="Fill"/>
+                <Grid Name="e4_templete_logo" Width="362" Height="88" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,108,0,0">
+                    <Image x:Name="e4_templete_logo_img" Stretch="Fill"/>
+                </Grid>
+                <Grid Name="e4_templete_clock" Width="361" Height="128" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="52,284,0,0" />
+                <Grid Name="e4_templete_weather" Width="416" Height="598" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,369,0,0" RenderTransformOrigin="0.497,0.478">
+                    <TextBlock Name="e4_templete_weather_city" Width="117" Height="34" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="192,64,0,0" FontSize="24" Foreground="White" FontWeight="Bold" TextAlignment="Center" Visibility="Collapsed" />
+                    <TextBlock Name="e4_templete_weather_temp" Width="112" Height="43" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,129,0,0" FontSize="36" Foreground="White" TextAlignment="Center" />
+                    <TextBlock Name="e4_templete_weather_ment" Width="127" Height="43" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="250,135,0,0" FontSize="24" Foreground="White" TextAlignment="Center"/>
+                    <TextBlock Name="e4_templete_weather_tamin" Width="63" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="204,125,0,0" FontSize="20" Foreground="White" Visibility="Collapsed" />
+                    <TextBlock Name="e4_templete_weather_tamax" Width="63" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="275,125,0,0" FontSize="20" Foreground="White" Visibility="Collapsed" />
+                    <TextBlock Name="e4_templete_weather_ws" Width="113" Height="56" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="192,478,0,0" FontSize="36" Foreground="#FFC32A99" FontWeight="Bold" />
+                    <TextBlock Name="e4_templete_weather_hm" Width="111" Height="54" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="228,389,0,0" FontSize="36" Foreground="#FF459E55" FontWeight="Bold" />
+                    <TextBlock Name="e4_templete_weather_pop" Width="116" Height="56" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="228,300,0,0" FontSize="36" Foreground="#FF102EB6" FontWeight="Bold" />
+                    <Grid Name="e4_templete_weather_flash" Width="89" Height="78" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,116,0,0" />
+                </Grid>
+                <Grid Name="e4_templete_stock" Width="275" Height="133" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,783,0,0" Visibility="Collapsed">
+                    <TextBlock Name="e4_templete_kospi" Width="129" Height="81" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,60,0,0" FontSize="22" Foreground="White" TextAlignment="Center" FontWeight="Bold" />
+                    <TextBlock Name="e4_templete_kosdaq" Width="129" Height="81" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="143,60,0,0" FontSize="22" Foreground="White" TextAlignment="Center" FontWeight="Bold" />
+                </Grid>
+                <Grid Name="e4_templete_player" Width="1440" Height="810" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,89,0,0" Background="Black" />
+                <Grid Name="e4_templete_ticker" Width="1456" Height="72" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="451,999,0,0" />
+            </Grid>
+
+            <!-- =========================== Custom (package t0 for 창원고) Template 1920 * 1080 85인치 가로 ==================================== -->
+            <Grid x:Name="t0_templete_Main" Width="1920" Height="1080" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <Image x:Name="t0_templete_bg_img" Width="1920" Height="1080" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Source ="D:\Working\Mpartners\OMS_솔루션\퓨처넷_스마트게시판\Smartboard\DidMatePlayer\source/t0_sample.png" Margin="0,0,0,0"/>
+                <!-- 
+                <Grid Name="t0_templete_logo1" Width="140" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,24,0,0">
+                    <Image x:Name="t0_templete_logo_img1" Stretch="Fill"/>
+                </Grid>
+                -->
+
+                <!--  현재시간 표시 -->
+                <TextBlock x:Name="t0_templete_date1" Width="215" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="146,332,0,0" FontFamily="NanumBarunGothic" FontSize="37" Foreground="White" TextAlignment="Center" Text="04.26 화요일"/>
+                <TextBlock x:Name="t0_templete_time1" Width="83" Height="52" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,410,0,0" FontFamily="NanumBarunGothic" FontSize="50" Foreground="White" TextAlignment="Center" Text="PM" FontWeight="Bold" />
+                <TextBlock x:Name="t0_templete_time2" Width="207" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,389,0,0" FontFamily="NanumBarunGothic" FontSize="75" Foreground="White" TextAlignment="Center" Text="03:59" FontWeight="Bold" />
+
+                <!--  날씨 표시 -->
+                <Grid x:Name="t0_templete_weather_grid" Width="443" Height="531" Margin="49,503,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Image x:Name="t0_templete_weather_bg_img" Stretch="Fill" Source ="D:\Working\Mpartners\OMS_솔루션\퓨처넷_스마트게시판\Smartboard\DidMatePlayer\source/6.png" />
+                </Grid>
+                <TextBlock Name="t0_templete_weather_temp1" Width="300" Height="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,580,0,0" FontFamily="NanumBarunGothic" FontSize="100" Foreground="Black" TextAlignment="Center" Text="15C"/>
+                <TextBlock Name="t0_templete_weather_ment1" Width="380" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,745,0,0" FontFamily="NanumBarunGothic" FontSize="30" Foreground="Black" TextAlignment="Center" Text="흐려져 눈비   -29C/-16C"/>
+
+                <!-- 미세먼지 표시-->
+                <Grid x:Name="t0_template_dust" Width="307" Height="144" Margin="105,863,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="dust_border" CornerRadius="30">
+                        <Grid>
+                            <Border Name="dust_mask" CornerRadius="{Binding ElementName=dust_border, Path=CornerRadius}" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+                            <!-- Rounded mask (stretches to fill Grid) -->
+                            <Grid x:Name="t0_template_dust_grid">
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=dust_mask}"/>
+                                </Grid.OpacityMask>
+
+                                <ContentControl x:Name="dust_browserContainer"/>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- 콘텐츠 표시 -->
+                <Grid x:Name="t0_templete_player1" Width="1400" Height="988" Margin="470,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="player1_border" CornerRadius="30">
+                        <Grid>
+                            <!-- Rounded mask (stretches to fill Grid) -->
+                            <!-- <Border Name="player1_mask" Background="Black" CornerRadius="{Binding ElementName=player1_border, Path=CornerRadius}"/> -->
+                            <Border Name="player1_mask" CornerRadius="29" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"/>
+
+                            <Grid x:Name="t0_templete_player1_grid">
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=player1_mask}"/>
+                                </Grid.OpacityMask>
+
+                                <!--
+                                <ContentControl x:Name="HtmlBrowser_A_1_Container" HorizontalContentAlignment="Stretch" Foreground="{x:Null}"/>
+                                <ContentControl x:Name="HtmlBrowser_A_2_Container" HorizontalContentAlignment="Stretch" Foreground="{x:Null}"/>
+                                -->
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+            </Grid>
+
+            <!-- =========================== Custom (package f0 for 현대퓨처넷) Template 540 * 1920 W32 세로 ==================================== -->
+            <Grid x:Name="f0_templete_Main" Width="540" Height="1920" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                <Image x:Name="f0_templete_bg_img" Width="540" Height="1920" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,2,0,-2" Source ="D:\Working\Mpartners\OMS_솔루션\퓨처넷_스마트게시판\Smartboard\DidMatePlayer\source/f0_sample.jpg" />
+                <!-- 
+                <Grid Name="f0_templete_logo1" Width="140" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,24,0,0">
+                    <Image x:Name="f0_templete_logo_img1" Stretch="Fill"/>
+                </Grid>
+                -->
+
+                <!--  현재시간 표시 -->
+                <TextBlock x:Name="f0_templete_date1" Width="154" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,32,0,0" FontFamily="NanumBarunGothic" FontSize="18" Foreground="Black" TextAlignment="Center" Text="2023.04.04 WED"/>
+                <TextBlock x:Name="f0_templete_time1" Width="61" Height="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,73,0,0" FontFamily="NanumBarunGothic" FontSize="35" Foreground="Black" TextAlignment="Left" Text="PM" />
+                <TextBlock x:Name="f0_templete_time2" Width="130" Height="46" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,64,0,0" FontFamily="NanumBarunGothic" FontSize="45" Foreground="Black" TextAlignment="Right" Text="12:57" />
+
+                <!--  날씨 표시 -->
+                <Grid x:Name="f0_templete_weather_ment1" Width="42" Height="42" Margin="377,66,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Image x:Name="f0_templete_weather_ment1_img1" Stretch="Fill" />
+                </Grid>
+                <TextBlock Name="f0_templete_weather_temp1" Width="84" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="435,78,0,0" FontFamily="NanumBarunGothic" FontSize="18" Foreground="Black" TextAlignment="Left" Text="-15/-5C"/>
+
+                <!-- 콘텐츠_1 표시 -->
+                <Grid x:Name="f0_templete_player1" Width="514" Height="540" Margin="12,154,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="f0_player1_border" CornerRadius="11">
+                        <Grid>
+                            <!-- Rounded mask (stretches to fill Grid) -->
+                            <!-- <Border Name="f0_player1_mask" Background="Black" CornerRadius="{Binding ElementName=f0_player1_border, Path=CornerRadius}"/> -->
+                            <Border Name="f0_player1_mask" CornerRadius="10" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,0,0"/>
+
+                            <Grid x:Name="f0_templete_player1_grid">
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=f0_player1_mask}"/>
+                                </Grid.OpacityMask>
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- 콘텐츠_2 표시 -->
+                <Grid x:Name="f0_templete_player2" Width="514" Height="876" Margin="12,717,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border x:Name="f0_player2_border" CornerRadius="11">
+                        <Grid>
+                            <!-- Rounded mask (stretches to fill Grid) -->
+                            <!-- <Border Name="f0_player2_mask" Background="Black" CornerRadius="{Binding ElementName=f0_player2_border, Path=CornerRadius}"/> -->
+                            <Border Name="f0_player2_mask" CornerRadius="10" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Margin="0,0,0,0"/>
+
+                            <Grid x:Name="f0_templete_player2_grid">
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=f0_player2_mask}"/>
+                                </Grid.OpacityMask>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- 주가지수표시 환율 USD -->
+                <TextBlock x:Name="f0_exchange_USD_text1" Width="105" Height="23" Margin="26,1745,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="Black" TextAlignment="Center" Text="1,337.30"/>
+                <TextBlock x:Name="f0_exchange_USD_text2" Width="66" Height="20" Margin="24,1793,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="#FFD62B2B" TextAlignment="Right" Text="9.30"/>
+                <Grid x:Name="f0_exchange_USD_ment1" Width="18" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="94,1795,0,0">
+                    <Image x:Name="f0_exchange_USD_ment1_img1" Stretch="Fill"/>
+                </Grid>
+                <!-- 주가지수표시 환율 EU -->
+                <TextBlock x:Name="f0_exchange_EUR_text1" Width="105" Height="23" Margin="159,1745,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="Black" TextAlignment="Center" Text="1,337.30"/>
+                <TextBlock x:Name="f0_exchange_EUR_text2" Width="66" Height="20" Margin="157,1793,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="#FFD62B2B" TextAlignment="Right" Text="9.30"/>
+                <Grid x:Name="f0_exchange_EU_ment1" Width="18" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="227,1795,0,0">
+                    <Image x:Name="f0_exchange_EUR_ment1_img1" Stretch="Fill"/>
+                </Grid>
+                <!-- 주가지수표시 환율 JPN -->
+                <TextBlock x:Name="f0_exchange_JPY_text1" Width="105" Height="23" Margin="289,1745,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="Black" TextAlignment="Center" Text="1,337.30"/>
+                <TextBlock x:Name="f0_exchange_JPY_text2" Width="66" Height="20" Margin="286,1793,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="#FFD62B2B" TextAlignment="Right" Text="9.30"/>
+                <Grid x:Name="f0_exchange_JPY_ment1" Width="18" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="356,1795,0,0">
+                    <Image x:Name="f0_exchange_JPY_ment1_img1" Stretch="Fill"/>
+                </Grid>
+                <!-- 주가지수표시 환율 CHN -->
+                <TextBlock x:Name="f0_exchange_CNY_text1" Width="105" Height="23" Margin="414,1745,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="Black" TextAlignment="Center" Text="1,337.30"/>
+                <TextBlock x:Name="f0_exchange_CNY_text2" Width="66" Height="20" Margin="411,1793,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="NanumBarunGothic" FontSize="20" Foreground="#FFD62B2B" TextAlignment="Right" Text="9.30"/>
+                <Grid x:Name="f0_exchange_CNY_ment1" Width="18" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="481,1795,0,0">
+                    <Image x:Name="f0_exchange_CNY_ment1_img1" Stretch="Fill"/>
+                </Grid>
+
+                <Grid x:Name="f0_templete_news_ticker" Width="490" Height="38" Margin="24,1861,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+            </Grid>
+
+            <!-- =========================== Custom (package f1 for 현대퓨처넷) Template 540 * 1920 W32 세로 ==================================== -->
+            <Grid x:Name="f1_templete_Main" Width="540" Height="1920" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image x:Name="f1_templete_bg_img" Width="540" Height="1920" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,2,0,-2" Source ="D:\Working\Mpartners\OMS_솔루션\퓨처넷_스마트게시판\Smartboard\DidMatePlayer\source/f1_sample.jpg" />
+                <!-- 
+                <Grid Name="f1_templete_logo1" Width="140" Height="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,24,0,0">
+                    <Image x:Name="f1_templete_logo_img1" Stretch="Fill"/>
+                </Grid>
+                -->
+
+                <!--  현재시간 표시 -->
+                <TextBlock x:Name="f1_templete_welcome" Width="177" Height="26" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="181,25,0,0" FontFamily="NanumBarunGothic" FontSize="22" Foreground="White" TextAlignment="Center" Text="방문을 환영합니다."/>
+
+                <!--  현재시간 표시 -->
+                <TextBlock x:Name="f1_templete_date1" Width="154" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,86,0,0" FontFamily="NanumBarunGothic" FontSize="19" Foreground="White" TextAlignment="Center" Text="2023.04.04 WED"/>
+                <TextBlock x:Name="f1_templete_time1" Width="144" Height="51" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,114,0,0" FontFamily="NanumBarunGothic" FontSize="53" Foreground="White" TextAlignment="Center" Text="12:57" />
+                <TextBlock x:Name="f1_templete_time2" Width="61" Height="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="185,127,0,0" FontFamily="NanumBarunGothic" FontSize="38" Foreground="White" TextAlignment="Center" Text="PM" />
+               
+                <!--  날씨 표시 -->
+                <Grid x:Name="f1_templete_weather_ment1" Width="42" Height="42" Margin="363,80,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Image x:Name="f1_templete_weather_ment1_img1" Stretch="Fill" />
+                </Grid>
+                <TextBlock Name="f1_templete_weather_temp1" Width="102" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,96,0,0" FontFamily="NanumBarunGothic" FontSize="14" Foreground="White" TextAlignment="Left" Text="15C 맑음"/>
+
+                <!-- 미세먼지 표시-->
+                <Grid x:Name="f1_template_dust_ment1" Width="36" Height="36" Margin="366,134,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image x:Name="f1_templete_dust_ment1_img1" Stretch="Fill" />
+                </Grid>
+                <TextBlock Name="f1_templete_dust_ment2" Width="72" Height="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,144,0,0" FontFamily="NanumBarunGothic" FontSize="14" Foreground="White" TextAlignment="Left" Text="매우나쁨"/>
+
+                <!-- 콘텐츠_1 표시 -->
+                <Grid x:Name="f1_templete_player1" Width="540" Height="304" Margin="0,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <!-- 콘텐츠_2 표시 -->
+                <Grid x:Name="f1_templete_player2" Width="540" Height="1389" Margin="0,532,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            </Grid>
+
+            <!-- ===========================  Full  =========================== -->
+            <Grid x:Name="playGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="layoutGrid" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Image Transition -->
+                    <Grid x:Name="grid_transition" Visibility="Collapsed">
+                        <ListBox x:Name="_transitions" ItemsSource="{DynamicResource Transitions}" Visibility="Collapsed" />
+                        <ListBox x:Name="_data" Visibility="Collapsed" />
+                        <app:TransitionPresenter Transition="{Binding SelectedItem, ElementName=_transitions}" Content="{Binding SelectedItem, ElementName=_data}">
+                            <app:TransitionPresenter.Resources>
+                                <DataTemplate DataType="{x:Type app:Picture}">
+                                    <Image Source="{Binding GetUri}" Stretch="{Binding GetStretch}" />
+                                </DataTemplate>
+                            </app:TransitionPresenter.Resources>
+                        </app:TransitionPresenter>
+                    </Grid>
+
+                    <!-- Movie A expression 
+                    <Grid x:Name="movieGrid_A" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="#FFEC1C1C" Visibility="Hidden">
+                        <MediaElement Name="movieElement_A" UnloadedBehavior="Stop" MediaEnded="Element_MediaEnded"/>
+                    </Grid>
+                    -->
+                </Grid>
+
+                <Grid x:Name="TempGrid" Grid.Row="1" Visibility="Collapsed" >
+                    <!-- Movie A expression 
+                    <Grid x:Name="movieGrid_B" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="#FFEC1C1C" Visibility="Hidden">
+                        <MediaElement Name="movieElement_B" UnloadedBehavior="Stop" MediaEnded="Element_MediaEnded"/>
+                    </Grid>
+                    -->
+                </Grid>
+
+            </Grid>
+
+            <!-- ===========================  우 -> 좌 Ticker  =========================== -->
+            <Canvas x:Name="ticker_canvas" ClipToBounds="True" Margin="187,10,0,0">
+                <TextBlock Name="ticker_textBlock" Canvas.Left="0" Canvas.Top="0" FontWeight="Bold">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            <SkewTransform AngleX="0" AngleY="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform x:Name="rtTTransform"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Canvas>
+
+            <!-- ===========================  Fade in/out Ticker  =========================== -->
+            <Canvas x:Name="fade_canvas" ClipToBounds="True" Margin="187,10,0,0">
+                <TextBlock Name="fade_textBlock" Canvas.Left="0" Canvas.Top="0" FontWeight="Bold" TextAlignment="Center" />
+            </Canvas>
+
+            <!--
+            <Canvas x:Name="fade_canvas" ClipToBounds="True" Margin="187,10,0,0">
+                <TextBlock Name="fade_textBlock" Canvas.Left="0" Canvas.Top="0" FontWeight="Bold" TextAlignment="Center" >
+                    <TextBlock.Triggers>
+                        <EventTrigger RoutedEvent="TextBlock.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="FadeAnimation" Completed="Fade_Storyboard_Completed" FillBehavior="Stop">
+                                    <DoubleAnimation Storyboard.TargetName="fade_textBlock" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:2" FillBehavior="Stop"/>
+                                    <DoubleAnimation Storyboard.TargetName="fade_textBlock" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:2" BeginTime="0:0:4" FillBehavior="Stop"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </TextBlock.Triggers>
+                </TextBlock>
+            </Canvas>
+            -->
+
+        </Grid>
+    </Viewbox>
+
+</Window>
